@@ -2,7 +2,7 @@
 import {  ContactName, DeletBtn } from "components/ContactList/ContactList.styled";
 import { FaRegUser } from 'react-icons/fa';
 import { useDispatch } from "react-redux";
-import {deleteContacts} from "../../redux/contactsSlice"
+import {deleteContact} from "../../redux/operations"
 import PropTypes from 'prop-types';
 
 
@@ -11,19 +11,19 @@ import PropTypes from 'prop-types';
   //   );
   // };
 
-export const ContactItem = ({ id, name, number}) => {
+export const ContactItem = ({ id, name, phone}) => {
 
     const dispatch = useDispatch();
 
     return <>
-        <ContactName><FaRegUser/> {name} {number}</ContactName>
-        <DeletBtn type="button" onClick={() => dispatch(deleteContacts(id))}>Delete</DeletBtn>
+        <ContactName><FaRegUser/> {name} {phone}</ContactName>
+        <DeletBtn type="button" onClick={() => dispatch(deleteContact(id))}>Delete</DeletBtn>
     </>
 };
 
 ContactItem.propTypes = {
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    number: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
     // deletContactMethod: PropTypes.func.isRequired,
 };
